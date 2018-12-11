@@ -1,7 +1,7 @@
-package application;
+package utils;
 
 import com.google.gson.Gson;
-import model.Config;
+import model.config.Config;
 import model.Input;
 import org.apache.commons.io.FileUtils;
 

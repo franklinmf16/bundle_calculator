@@ -1,4 +1,7 @@
 package application;
 
-public class Run {
+public class OutputController {
+    /* read input */
+    /* calculate */
+    /* output file */
 }

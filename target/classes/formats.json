@@ -16,7 +16,7 @@
     },
     {
       "name": "Audio",
-      "code": "Flac",
+      "code": "FLAC",
       "bundles": [
         {
           "quantity": 5,
