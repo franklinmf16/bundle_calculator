@@ -6,5 +6,4 @@ import lombok.Data;
 public class Bundle {
     private int quantity;
     private double price;
-
 }
