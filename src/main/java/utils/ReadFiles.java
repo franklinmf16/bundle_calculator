@@ -3,12 +3,14 @@ package utils;
 import com.google.gson.Gson;
 import model.config.Config;
 import model.Input;
+import model.config.Item;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class ReadFiles {
@@ -43,6 +45,14 @@ public class ReadFiles {
             e.printStackTrace();
         }
         return inputs;
+    }
+
+    public HashMap<String, Item> ItemMapper(Config config){
+        HashMap<String, Item> itemMapper = new HashMap<String, Item>();
+        for (Item item : config.getFormats()) {
+            itemMapper.put(item.getCode(), item);
+        }
+        return itemMapper;
     }
 
 }

@@ -1,12 +1,14 @@
 package model.output;
 
-import model.config.Bundle;
+
+import lombok.Data;
 
 import java.util.List;
 
+@Data
 public class Output {
     private int number;
     private String itemName;
     private Double totalPrice;
-    private List<Bundle> bundlesCombinition;
+    private List<Combination> bundlesCombination;
 }

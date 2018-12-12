@@ -19,12 +19,16 @@
       "code": "FLAC",
       "bundles": [
         {
-          "quantity": 5,
-          "price": 450
+          "quantity": 3,
+          "price": 427.50
         },
         {
-          "quantity": 10,
-          "price": 800
+          "quantity": 6,
+          "price": 810
+        },
+        {
+          "quantity": 9,
+          "price": 1147.50
         }
       ]
     },
@@ -33,12 +37,16 @@
       "code": "VID",
       "bundles": [
         {
-          "quantity": 5,
-          "price": 450
+          "quantity": 3,
+          "price": 570
         },
         {
-          "quantity": 10,
-          "price": 800
+          "quantity": 5,
+          "price": 900
+        },
+        {
+          "quantity": 9,
+          "price": 1530
         }
       ]
     }
