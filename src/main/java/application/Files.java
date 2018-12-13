@@ -1,20 +1,21 @@
-package utils;
+package application;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import model.config.Config;
 import model.Input;
-import model.config.Item;
+import model.output.Output;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
-public class ReadFiles {
-    public Config readConfig() {
+public class Files {
+    public static Config readConfig() {
         File file = new File("src/main/resources/formats.json");
         String content = null;
         try {
@@ -26,7 +27,7 @@ public class ReadFiles {
         return config;
     }
 
-    public ArrayList<Input> readInput(){
+    public static ArrayList<Input> readInput(){
         String dataSource = "src/main/resources/input.csv";
         File file = new File(dataSource);
         ArrayList<Input> inputs = new ArrayList<Input>();
@@ -47,12 +48,15 @@ public class ReadFiles {
         return inputs;
     }
 
-    public HashMap<String, Item> ItemMapper(Config config){
-        HashMap<String, Item> itemMapper = new HashMap<String, Item>();
-        for (Item item : config.getFormats()) {
-            itemMapper.put(item.getCode(), item);
+    public static void write(List<Output> outputs) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String string = gson.toJson(outputs);
+        File file = new File("src/main/resources/output.json");
+        try {
+            FileUtils.write(file, string, "utf-8");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return itemMapper;
     }
 
 }

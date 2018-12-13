@@ -1,9 +1,8 @@
-package utils;
+package application;
 
 import model.Input;
-import model.config.Bundle;
-import model.config.Config;
 import model.config.Item;
+import model.config.Config;
 import model.output.Combination;
 import model.output.Output;
 
@@ -11,8 +10,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OutputGenerator {
+    private HashMap<String, Item> itemMapper;
 
-    public Output generateOutput(Item item, Input input){
+    public void setConfig(Config config) {
+        itemMapper = new HashMap<String, Item>();
+        config.getFormats().stream().forEach(
+                item -> itemMapper.put(item.getCode(), item)
+        );
+    }
+
+    public Output generateOutput(Input input){
+        String code = input.getItem();
+        Item item = itemMapper.get(code);
+
         Algorithm algorithm = new Algorithm();
         Output output = new Output();
 
@@ -33,7 +43,7 @@ public class OutputGenerator {
     /* (item, unit price)*/
     private ArrayList<Combination> calculateUnitPrice(Item item, HashMap<Integer, Integer> combination){
         HashMap<Integer, Double> priceMapper = item.priceMapper();
-        ArrayList<Combination> combinations = new ArrayList<Combination>();
+        ArrayList<Combination> combinations = new ArrayList<>();
         for (Integer i : combination.keySet()) {
             Double unitPrice = priceMapper.get(i);
             Double totalPrice = unitPrice * combination.get(i);
@@ -44,11 +54,9 @@ public class OutputGenerator {
     }
 
     private double getTotalPrice(ArrayList<Combination> unitPriceSum){
-        double sum = 0;
-        for (Combination combination : unitPriceSum) {
-            sum += combination.getUnitPrice();
-        }
-        return sum;
+        return unitPriceSum.stream()
+                .mapToDouble(Combination::getUnitPrice)
+                .sum();
     }
 
 
