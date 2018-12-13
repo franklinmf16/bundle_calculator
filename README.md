@@ -1,5 +1,9 @@
 # Bundle Calculator
 
+## 运行说明
+1. 使用maven build project
+2. 需要修改文件路径
+
 ## Context
 One online advertisement company can provide different kinds of online formats. The company has decided to allow customers to pay in bundles and charge on a per bundle basis. So if the image based advertisement in bundles of 5 and 10 and the customers ordered 15 they would get a bundle of 10 and a bundle of 5.
 
